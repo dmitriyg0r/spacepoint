@@ -50,7 +50,7 @@ function Navigation({ activePage, onNavigate, user }) {
           </a>
         </div>
         
-        <div className="nav-user">
+        <div className="nav-user" onClick={() => onNavigate('profile')}>
           {user && (
             <div className="user-info">
               <img src={user.avatar || "https://via.placeholder.com/40"} alt="Аватар" />

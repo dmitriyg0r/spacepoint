@@ -2,22 +2,26 @@ import { useState } from 'react';
 import './Login.css';
 
 function Login({ onLogin }) {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Здесь будет логика аутентификации
-    // Для примера просто проверим наличие данных
-    if (!email || !password) {
-      setError('Пожалуйста, заполните все поля');
-      return;
+    // Простая проверка для тестового пользователя
+    if (username === 'test' && password === 'test') {
+      onLogin({
+        id: 3,
+        username: 'test',
+        name: 'Тестовый Пользователь',
+        avatar: 'https://randomuser.me/api/portraits/lego/1.jpg',
+        friends: 5,
+        photos: 10
+      });
+    } else {
+      setError('Неверный логин или пароль');
     }
-    
-    // Имитация успешного входа
-    onLogin({ email, name: 'Пользователь', id: 1 });
   };
 
   return (
@@ -29,13 +33,13 @@ function Login({ onLogin }) {
         
         <form onSubmit={handleSubmit} className="login-form">
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">Логин</label>
             <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Введите ваш email"
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Введите ваш логин"
               required
             />
           </div>

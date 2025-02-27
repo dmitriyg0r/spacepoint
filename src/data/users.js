@@ -20,7 +20,7 @@ export const users = [
   },
   {
     id: 3,
-    email: 'test@test.com',
+    username: 'test',
     password: 'test',
     name: 'Тестовый Пользователь',
     avatar: 'https://randomuser.me/api/portraits/lego/1.jpg',
